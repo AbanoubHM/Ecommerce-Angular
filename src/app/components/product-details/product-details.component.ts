@@ -9,10 +9,18 @@ import { ProductService } from 'src/app/Service/product.service';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-
+  count:number=1
   errMsg:string=''
   prdId:any
-  prodDet?:IProduct
+  prodDet:IProduct={
+    prodectId:0,
+    name:'',
+    price:0,
+    qnt:0,
+    desce:'',
+    category:'',
+    image:''
+  }
   constructor(private activatedRoute:ActivatedRoute,private postSrv:ProductService,private router:Router) { }
 
   ngOnInit(): void {
@@ -27,6 +35,16 @@ export class ProductDetailsComponent implements OnInit {
         this.errMsg=error
       }
     )
+  }
+  incCount(){
+    this.count++;
+  }
+  decCount(){
+    if(this.count<=1){
+      this.count=1;
+    }else{
+      this.count--;
+    }
   }
 
 }

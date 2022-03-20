@@ -26,9 +26,33 @@ $green-palette: (
     900: white,
   ),
 );
+$grey-palette: (
+  50: #e4f9f9,
+  100: #bdf0f1,
+  200: #96e7e9,
+  300: #75dce1,
+  400: #66d3da,
+  500: #60cbd5,
+  600: #5abac2,
+  700: #53a4a9,
+  800: #4d8f92,
+  900: #426b69,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
 
 $my-primary: mat.define-palette($green-palette, 500);
-$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$my-accent: mat.define-palette($grey-palette, 500);
 
 $my-theme: mat.define-light-theme(
   (
@@ -43,4 +67,17 @@ $my-theme: mat.define-light-theme(
 
 :host .mat-raised-button {
   border-radius: 50px !important;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield !important;
+}
+:host .mat-raised-button {
+  width: 12em;
+  height: 2em;
 }

@@ -2,17 +2,17 @@
 <main>
     <!-- introBannerHolder -->
     <section class="introBannerHolder d-flex w-100 bgCover"
-        style="background-image: url(assets/styles/images/b-bg2.jpg);">
+        style="background-image: url(assets/styles/images/b-bg7.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-12 pt-lg-23 pt-md-15 pt-sm-10 pt-6 text-center " style="margin-top: 60px;">
                     <h1 class="headingIV fwEbold playfair mb-4">Shop</h1>
                     <ul class="list-unstyled breadCrumbs d-flex justify-content-center">
-                        <li class="mr-2"><a href="home.html">Home</a></li>
+                        <li class="mr-2"><a routerLink="">Home</a></li>
                         <li class="mr-2">/</li>
-                        <li class="mr-2"><a href="shop.html">Shop</a></li>
+                        <li class="mr-2"><a routerLink="products">Shop</a></li>
                         <li class="mr-2">/</li>
-                        <li class="active">Pellentesque aliquet</li>
+                        <li class="active">{{prodDet?.name}}</li>
                     </ul>
                 </div>
             </div>
@@ -32,7 +32,7 @@
             </div>
             <div class="col-12 col-lg-6 order-lg-3">
                 <!-- productTextHolder -->
-                <div class="productTextHolder overflow-hidden">
+                <div class=" overflow-hidden">
                     <h2 class="fwEbold mb-2">{{prodDet?.name}}</h2>
                     <ul class="list-unstyled ratingList d-flex flex-nowrap mb-2">
                         <li class="mr-2 "><a><i class="fas fa-star"></i></a></li>
@@ -40,23 +40,42 @@
                         <li class="mr-2"><a><i class="fas fa-star"></i></a></li>
                         <li class="mr-2"><a><i class="fas fa-star"></i></a></li>
                         <li class="mr-2"><a><i class="far fa-star"></i></a></li>
-                        <li>( 5 customer reviews )</li>
+
                     </ul>
-                    <strong class="price d-block mb-5 text-green">{{prodDet?.price|currency}}</strong>
-                    <p class="mb-5">{{prodDet?.desce}}</p>
+
+                    <strong style="font-size: 2em;"
+                        class="price d-block mb-1 mt-2 text-green">{{prodDet.price|currency}}</strong>
+                    <div class="mb-3">
+                        <del>{{prodDet.price*1.1 | number:'1.2-2'|currency}}</del>
+                    </div>
+                    <p class="mb-5">{{prodDet.desce}}</p>
                     <ul class="list-unstyled productInfoDetail mb-5 overflow-hidden">
 
-                        <li class="mb-2">Quantity: <span>{{prodDet?.qnt}}</span></li>
+                        <li style="font-size: 1.3em;" class="mb-2">Quantity: <span>{{prodDet.qnt}}</span></li>
 
                     </ul>
 
 
                     <div class="holder overflow-hidden d-flex flex-wrap mb-6">
-                        <input type="number" placeholder="1">
-                        <button mat-raised-button color="primary">Add To Cart <mat-icon matSuffix>add_shopping_cart
-                            </mat-icon>
-                        </button>
-
+                        <div class="col-12">
+                            <mat-form-field class="mb-2" appearance="outline" floatLabel="always">
+                                <mat-label>Amount</mat-label>
+                                <input style="text-align: center; font-size: 1.5em;" max="{{prodDet?.qnt}}" matInput
+                                    type="number" [(ngModel)]="count" placeholder="0">
+                                <button matPrefix mat-icon-button color="primary" (click)="decCount()">
+                                    <mat-icon>remove</mat-icon>
+                                </button>
+                                <button matSuffix mat-icon-button color="primary" (click)="incCount()">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12">
+                            <button style="font-size: 1.5em;" mat-raised-button color="primary">Add To Cart <mat-icon
+                                    matSuffix>add_shopping_cart
+                                </mat-icon>
+                            </button>
+                        </div>
                     </div>
                     <br>
                     <ul class="list-unstyled productInfoDetail mb-3">
@@ -73,44 +92,7 @@
     </div>
     <br>
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <!-- tabSetList -->
-                <ul class="list-unstyled tabSetList d-flex justify-content-center mb-9">
-                    <li class="mr-md-20 mr-sm-10 mr-2">
-                        <a href="#tab1-0" class="active playfair fwEbold pb-2 m-5">Description</a>
-                    </li>
-                    <li>
-                        <a href="#tab2-0" class="playfair fwEbold pb-2 m-5">Reviews ( 2 )</a>
-                    </li>
-                </ul>
-                <!-- tab-content -->
-                <div class="tab-content mb-xl-11 mb-lg-10 mb-md-8 mb-5 mt-5">
-                    <div id="tab1-0" class="active">
-                        <p>Aenean id ullamcorper libero. Vestibulum imperdiet nibh. Lorem ullamcorper volutpat.
-                            Vestibulum lacinia risus. Etiam sagittis ullamcorper volutpat. Vestibulum lacinia risus sed
-                            ligula malesuada volutpat.Pellentesque habitant morbi tristique senectus et netus et
-                            malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
-                            tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi
-                            vitae est. Mauris placerat eleifend leo Pellentesque habitant morbi tristique senectus et
-                            netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies
-                            eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies
-                            mi vitae est. Mauris placerat eleifend leo.</p>
-                    </div>
-                    <div id="tab2-0">
-                        <p>88888 Aenean id ullamcorper libero. Vestibulum imperdiet nibh. Lorem ullamcorper volutpat.
-                            Vestibulum lacinia risus. Etiam sagittis ullamcorper volutpat. Vestibulum lacinia risus sed
-                            ligula malesuada volutpat.Pellentesque habitant morbi tristique senectus et netus et
-                            malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
-                            tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi
-                            vitae est. Mauris placerat eleifend leo Pellentesque habitant morbi tristique senectus et
-                            netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies
-                            eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies
-                            mi vitae est. Mauris placerat eleifend leo.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 
 </main>
