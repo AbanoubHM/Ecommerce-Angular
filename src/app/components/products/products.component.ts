@@ -3,6 +3,7 @@ import { IProduct } from '../Models/iproduct';
 import { ProductService } from '../../Service/product.service'
 import { Router, ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/Service/cart.service';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-products',
@@ -13,7 +14,7 @@ export class ProductsComponent implements OnInit {
   postList?:IProduct[]
   public productList : any ;
   errMsg:string=''
-  constructor(private activatedRoute:ActivatedRoute,private postSrv:ProductService,private router:Router ,private cartService: CartService) { }
+  constructor(private activatedRoute:ActivatedRoute,private postSrv:ProductService,private router:Router ,private cartService: CartService, private snakeBar: MatSnackBar) { }
 
 
   
@@ -34,6 +35,7 @@ export class ProductsComponent implements OnInit {
 
   addtocart(item: any){
 this.cartService.addtoCart(item)
+this.snakeBar.open("Added","", {duration:1000, panelClass:["bg-success","text-center"]})
   }
 
 
