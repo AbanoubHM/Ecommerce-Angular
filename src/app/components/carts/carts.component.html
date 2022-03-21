@@ -1,11 +1,11 @@
 <main>
     <!-- introBannerHolder -->
     <section class="introBannerHolder d-flex w-100 bgCover"
-        style="background-image: url(http://placehold.it/1920x300);">
+        style="background-image: url(assets/styles/images/b-bg7.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-12 pt-lg-23 pt-md-15 pt-sm-10 pt-6 text-center">
-                    <h1 class="headingIV fwEbold playfair mb-4">My Cart</h1>
+                    <h1 class="headingIV fwEbold playfair pt-5 mb-4">My Cart</h1>
                     <ul class="list-unstyled breadCrumbs d-flex justify-content-center">
                         <li class="mr-sm-2 mr-1"><a routerLink="">Home</a></li>
                         <li class="mr-sm-2 mr-1">/</li>
@@ -18,10 +18,10 @@
         </div>
     </section>
     <!-- cartHolder -->
-    
-    <ng-container *ngIf="products.length !=0" style="text-align: center;">
 
-        <div class="cartHolder container pt-xl-21 pb-xl-24 py-lg-20 py-md-16 py-10" >
+    <ng-container *ngIf="products.length" style="text-align: center;">
+
+        <div class="cartHolder container pt-xl-21 pb-xl-24 py-lg-20 py-md-16 py-10">
             <div class="row">
                 <!-- table-responsive -->
                 <div class="col-12 table-responsive mb-xl-22 mb-lg-20 mb-md-16 mb-10">
@@ -41,15 +41,27 @@
                             <tr class="align-items-center" *ngFor="let item of products; let i = index">
                                 <td>{{i+1}}</td>
                                 <td class="fwEbold border-top-0 border-bottom px-0 py-6">{{item.name}}</td>
-                                <td class="d-flex align-items-center border-top-0 border-bottom px-0 py-6"><div class="imgHolder"><img src="{{item.image}}" alt="image description" class="img-fluid"></div></td>
+                                <td class="d-flex align-items-center border-top-0 border-bottom px-0 py-6">
+                                    <div class="imgHolder"><img src="{{item.image}}" alt="image description"
+                                            class="img-fluid"></div>
+                                </td>
                                 <td class="fwEbold border-top-0 border-bottom px-0 py-6">{{item.price|currency}}</td>
-                                <td  class="fwEbold border-top-0 border-bottom px-0 py-6"> <button (click)="removeItem(item)" type="button" class="btn btn-danger">X</button></td>
+                                <td class="fwEbold border-top-0 border-bottom px-0 py-6">
+
+                                    <button mat-icon-button color="warn" (click)="removeItem(item)">
+                                        <mat-icon>delete_forever</mat-icon>
+                                    </button>
+
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="1"></td>
-                                <td><button (click)="emptycart()" class="btn btn-danger">Empty Cart</button></td>
+                                <td><button (click)="emptycart()" mat-raised-button color="warn">Empty Cart</button>
+                                </td>
                                 <td><strong>Grand Total : ${{grandTotal}}</strong></td>
-                                <td><button routerLink="/products" class="btn btn-primary">Shop More</button></td>
+                                <td>
+                                    <button routerLink="/products" mat-raised-button color="primary">Shop More</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -58,12 +70,16 @@
         </div>
 
     </ng-container>
-    
-    
-    <ng-container *ngIf="products.length ==0">
-<div style="text-align: center;"><h3> your cart is empty</h3></div>
-<div style="text-align: center;"><img src="assets/EmptyCard.jpg" width="15%"></div>
-<img src="" alt="">
+
+
+    <ng-container *ngIf="!products.length">
+        <div class="mt-3" style="text-align: center;">
+            <h3> your cart is empty</h3>
+        </div>
+        <div style="text-align: center;"><img
+                src="https://cdn3.iconfinder.com/data/icons/shopping-and-ecommerce-29/90/empty_cart-512.png"
+                width="15%"></div>
+        <img src="" alt="">
     </ng-container>
 
 
