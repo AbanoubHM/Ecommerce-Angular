@@ -56,12 +56,12 @@
                     </div>
 
                     <div class="col-12 col-sm-6 col-lg-4 featureCol mb-7" *ngFor="let item of postList">
-                        <div matRipple (click)="getProdDetails(item.prodectId)" class="border" style="margin-top: 20px;">
+                        <div matRipple class="border" style="margin-top: 20px; cursor: pointer;">
                             <div class="imgHolder position-relative w-100 overflow-hidden">
 
 
                                 <div style="min-height:200px; overflow:hidden; max-height:250px;" class="text-center">
-                                    <img style="min-width:200px; overflow:hidden; max-height:250px;" [src]="item.image">
+                                    <img  (click)="getProdDetails(item.prodectId)" style="min-width:200px; overflow:hidden; max-height:250px;" [src]="item.image">
                                 </div>
 
                                 <ul class="list-unstyled postHoverLinskList d-flex justify-content-center m-0">
@@ -81,9 +81,9 @@
 
                                 </ul>
                             </div>
-                            <div class="text-center py-3 px-4">
+                            <div (click)="getProdDetails(item.prodectId)" class="text-center py-3 px-4">
                                 <span class="title d-block mb-2"><a style="text-decoration: none;"
-                                        routerLink="products/{{item.prodectId}}">{{item.name}}</a></span>
+                                       >{{item.name}}</a></span>
                                 <span class="price d-block fwEbold"><del>{{item.price*1.1 | number:'1.2-2'}}
                                         $</del>{{item.price}} $</span>
                                     </div>
