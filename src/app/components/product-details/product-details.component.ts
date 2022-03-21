@@ -2,6 +2,7 @@ import { IProduct } from './../Models/iproduct';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ProductService } from 'src/app/Service/product.service';
+import { CartService } from 'src/app/Service/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -21,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
     category:'',
     image:''
   }
-  constructor(private activatedRoute:ActivatedRoute,private postSrv:ProductService,private router:Router) { }
+  constructor(private activatedRoute:ActivatedRoute,private postSrv:ProductService,private router:Router,private cartService: CartService ) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params:ParamMap)=>{
@@ -46,5 +47,8 @@ export class ProductDetailsComponent implements OnInit {
       this.count--;
     }
   }
+  addtocart(item: any){
+    this.cartService.addtoCart(item)
+      }
 
 }
