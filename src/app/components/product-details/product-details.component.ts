@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ProductService } from 'src/app/Service/product.service';
 import { CartService } from 'src/app/Service/cart.service';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-details',
@@ -22,7 +23,7 @@ export class ProductDetailsComponent implements OnInit {
     category:'',
     image:''
   }
-  constructor(private activatedRoute:ActivatedRoute,private postSrv:ProductService,private router:Router,private cartService: CartService ) { }
+  constructor(private activatedRoute:ActivatedRoute,private postSrv:ProductService,private router:Router,private cartService: CartService , private snakeBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params:ParamMap)=>{
@@ -49,6 +50,7 @@ export class ProductDetailsComponent implements OnInit {
   }
   addtocart(item: any){
     this.cartService.addtoCart(item)
+    this.snakeBar.open("Added","", {duration:1000, panelClass:["bg-success","text-center"]})
       }
 
 }

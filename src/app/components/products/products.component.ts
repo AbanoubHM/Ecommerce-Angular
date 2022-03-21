@@ -14,6 +14,8 @@ export class ProductsComponent implements OnInit {
   postList?:IProduct[]
   public productList : any ;
   errMsg:string=''
+  listToggle:boolean=true;
+  numberOfProducts:number=0;
   constructor(private activatedRoute:ActivatedRoute,private postSrv:ProductService,private router:Router ,private cartService: CartService, private snakeBar: MatSnackBar) { }
 
 
@@ -22,7 +24,10 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.postSrv.getAllPosts().subscribe(postData=>{
       this.postList=postData
-      
+      console.log(this.postList)
+      this.postList.forEach(element => {
+        this.numberOfProducts++;
+      });
     },
     error=>{
       this.errMsg=error
@@ -38,7 +43,12 @@ this.cartService.addtoCart(item)
 this.snakeBar.open("Added","", {duration:1000, panelClass:["bg-success","text-center"]})
   }
 
-
+toggleList(){
+  this.listToggle=false
+}
+toggleGrid(){
+  this.listToggle=true
+}
 
 
 }
