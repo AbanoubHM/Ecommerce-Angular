@@ -1,70 +1,3 @@
-@use "@angular/material" as mat;
-
-@include mat.core();
-
-$green-palette: (
-  50: #f0f8e7,
-  100: #daeec2,
-  200: #c1e29b,
-  300: #a8d672,
-  400: #93ce50,
-  500: #80c52c,
-  600: #70b524,
-  700: #5ba119,
-  800: #458d0d,
-  900: #176b00,
-  contrast: (
-    50: rgba(black, 0.87),
-    100: rgba(black, 0.87),
-    200: rgba(black, 0.87),
-    300: white,
-    400: white,
-    500: white,
-    600: white,
-    700: white,
-    800: white,
-    900: white,
-  ),
-);
-$grey-palette: (
-  50: #e4f9f9,
-  100: #bdf0f1,
-  200: #96e7e9,
-  300: #75dce1,
-  400: #66d3da,
-  500: #60cbd5,
-  600: #5abac2,
-  700: #53a4a9,
-  800: #4d8f92,
-  900: #426b69,
-  contrast: (
-    50: rgba(black, 0.87),
-    100: rgba(black, 0.87),
-    200: rgba(black, 0.87),
-    300: white,
-    400: white,
-    500: white,
-    600: white,
-    700: white,
-    800: white,
-    900: white,
-  ),
-);
-
-$my-primary: mat.define-palette($green-palette, 500);
-$my-accent: mat.define-palette($grey-palette, 500);
-
-$my-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $my-primary,
-      accent: $my-accent,
-    ),
-  )
-);
-
-@include mat.all-component-themes($my-theme);
-
 :host .mat-raised-button {
   border-radius: 50px !important;
 }
@@ -80,4 +13,40 @@ input[type="number"] {
 :host .mat-raised-button {
   width: 12em;
   height: 2em;
+}
+
+.rate {
+  float: left;
+  height: 46px;
+  padding: 0 10px;
+}
+.rate:not(:checked) > input {
+  position: absolute;
+  right: 9999px;
+}
+.rate:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
+}
+.rate:not(:checked) > label:before {
+  content: "★ ";
+}
+.rate > input:checked ~ label {
+  color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
 }
