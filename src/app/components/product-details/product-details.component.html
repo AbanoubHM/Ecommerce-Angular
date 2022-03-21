@@ -34,14 +34,18 @@
                 <!-- productTextHolder -->
                 <div class=" overflow-hidden">
                     <h2 class="fwEbold mb-2">{{prodDet?.name}}</h2>
-                    <ul class="list-unstyled ratingList d-flex flex-nowrap mb-2">
-                        <li class="mr-2 "><a><i class="fas fa-star"></i></a></li>
-                        <li class="mr-2"><a><i class="fas fa-star"></i></a></li>
-                        <li class="mr-2"><a><i class="fas fa-star"></i></a></li>
-                        <li class="mr-2"><a><i class="fas fa-star"></i></a></li>
-                        <li class="mr-2"><a><i class="far fa-star"></i></a></li>
-
-                    </ul>
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div><br><br>
 
                     <strong style="font-size: 2em;"
                         class="price d-block mb-1 mt-2 text-green">{{prodDet.price|currency}}</strong>
@@ -71,8 +75,8 @@
                             </mat-form-field>
                         </div>
                         <div class="col-12">
-                            <button style="font-size: 1.5em;" mat-raised-button color="primary">Add To Cart <mat-icon
-                                    matSuffix>add_shopping_cart
+                            <button style="font-size: 1.5em;" class="mb-3 " mat-raised-button color="primary">Add
+                                To Cart <mat-icon matSuffix>add_shopping_cart
                                 </mat-icon>
                             </button>
                         </div>
