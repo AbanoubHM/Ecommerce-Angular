@@ -15,6 +15,7 @@ export class ProductsComponent implements OnInit {
   public productList : any ;
   errMsg:string=''
   listToggle:boolean=true;
+  numberOfProducts:number=0;
   constructor(private activatedRoute:ActivatedRoute,private postSrv:ProductService,private router:Router ,private cartService: CartService, private snakeBar: MatSnackBar) { }
 
 
@@ -23,7 +24,10 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.postSrv.getAllPosts().subscribe(postData=>{
       this.postList=postData
-      
+      console.log(this.postList)
+      this.postList.forEach(element => {
+        this.numberOfProducts++;
+      });
     },
     error=>{
       this.errMsg=error
