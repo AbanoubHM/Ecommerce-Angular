@@ -48,6 +48,7 @@
             </div>
             <div class="col-sm-4   col-lg-4">
                 <!-- wishListII -->
+
                 <ul class="nav nav-tabs   pt-3 justify-content-end border-bottom-0">
                     <li class="nav-item"><button routerLink="login" class=" position-relative" mat-icon-button
                             color="primary" aria-label="Example icon-button with a heart icon">
@@ -61,8 +62,9 @@
                     </li>
                     <li class="nav-item"><button routerLink="cart" class=" position-relative" mat-icon-button
                             color="primary" aria-label="Example icon-button with a heart icon">
-                            <mat-icon>shopping_cart</mat-icon>
+                            <mat-icon matBadge="{{totalItem}}" matBadgeColor="warn">shopping_cart</mat-icon>
                         </button>
+
                     </li>
 
                 </ul>

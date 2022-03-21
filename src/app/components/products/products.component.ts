@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../Models/iproduct';
 import { ProductService } from '../../Service/product.service'
 import { Router, ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/app/Service/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -10,8 +11,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProductsComponent implements OnInit {
   postList?:IProduct[]
+  public productList : any ;
   errMsg:string=''
-  constructor(private activatedRoute:ActivatedRoute,private postSrv:ProductService,private router:Router) { }
+  constructor(private activatedRoute:ActivatedRoute,private postSrv:ProductService,private router:Router ,private cartService: CartService) { }
 
 
   
@@ -19,6 +21,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.postSrv.getAllPosts().subscribe(postData=>{
       this.postList=postData
+      
     },
     error=>{
       this.errMsg=error
@@ -28,6 +31,13 @@ export class ProductsComponent implements OnInit {
     this.router.navigate([id],{relativeTo:this.activatedRoute})
 
   }
+
+  addtocart(item: any){
+this.cartService.addtoCart(item)
+  }
+
+
+
 
 }
 
