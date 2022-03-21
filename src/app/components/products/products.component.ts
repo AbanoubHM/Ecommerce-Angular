@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit {
   postList?:IProduct[]
   public productList : any ;
   errMsg:string=''
+  listToggle:boolean=true;
   constructor(private activatedRoute:ActivatedRoute,private postSrv:ProductService,private router:Router ,private cartService: CartService, private snakeBar: MatSnackBar) { }
 
 
@@ -38,7 +39,12 @@ this.cartService.addtoCart(item)
 this.snakeBar.open("Added","", {duration:1000, panelClass:["bg-success","text-center"]})
   }
 
-
+toggleList(){
+  this.listToggle=false
+}
+toggleGrid(){
+  this.listToggle=true
+}
 
 
 }
